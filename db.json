@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "id": "a792",
+      "status": "pending",
+      "title": "Tarefa",
+      "description": "testes",
+      "due_date": "2024-10-03",
+      "priority": "Média"
+    },
+    {
+      "id": "6ce2",
+      "status": "completed",
+      "title": "Tarefa",
+      "description": "teste",
+      "due_date": "2024-09-13",
+      "priority": "Média"
+    },
+    {
+      "id": "587c",
+      "title": "tarefa",
+      "description": "teste",
+      "due_date": "2024-09-13",
+      "priority": "Média",
+      "status": "in_progress"
+    },
+    {
+      "id": "d21c",
+      "title": "teste",
+      "description": "teste",
+      "due_date": "2024-09-13",
+      "priority": "Média",
+      "status": "pending"
+    }
+  ]
+}

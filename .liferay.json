@@ -1,0 +1,5 @@
+{
+	"deploy": {
+		"path": "C:\\liferay\\projeto-rockets\\liferay-portal-tomcat-7.4.3.120-ga120-1718225443\\liferay-portal\\osgi\\modules"
+	}
+}

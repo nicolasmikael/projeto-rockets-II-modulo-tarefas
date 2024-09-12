@@ -3,25 +3,44 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@clayui/button": "^3.116.0",
+    "@clayui/card": "^3.119.0",
+    "@clayui/css": "^3.119.0",
+    "@clayui/form": "^3.119.0",
+    "@clayui/list": "^3.119.0",
+    "@clayui/panel": "^3.119.0",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "axios": "^1.7.7",
+    "bootstrap": "^4.6.0",
+    "json-server": "^1.0.0-beta.2",
+    "react": "^16.12.0",
+    "react-bootstrap": "^2.10.4",
+    "react-dom": "^16.12.0",
+    "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3030 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:liferay": "liferay build",
+    "clean:liferay": "liferay clean",
+    "deploy:liferay": "liferay deploy"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "@liferay/portal-adapt-create-react-app": "*"
+  },
+  "portlet": {
+    "com.liferay.portlet.display-category": "rockets",
+    "javax.portlet.name": "projetorockets",
+    "javax.portlet.resource-bundle": "content.Language",
+    "javax.portlet.security-role-ref": "power-user,user",
+    "com.liferay.portlet.instanceable": true
   },
   "browserslist": {
     "production": [
