@@ -20,7 +20,7 @@ const Column = React.memo(({ status, tasks, handleDeleteTask }) => {
             className="bg-white rounded p-2 shadow-sm"
             style={{
               minHeight: "300px",
-              transition: "none", // Transição removida para evitar as tremidas de tela
+              transition: "none",
             }}
           >
             {tasks.map((task, index) => (
