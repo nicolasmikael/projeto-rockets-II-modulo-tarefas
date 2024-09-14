@@ -1,61 +1,147 @@
-import React from "react";
+import React, { useState } from "react";
 import ClayCard from "@clayui/card";
 import ClayButton from "@clayui/button";
-import ClayList from "@clayui/list";
+import ClayModal, { useModal } from "@clayui/modal";
+import ClayForm, { ClayInput, ClaySelect } from "@clayui/form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { Draggable } from "react-beautiful-dnd";
 
-const TaskItem = ({ task, onStatusChange, onDelete }) => {
-  const handleStatusChange = (e) => {
-    onStatusChange(task.id, e.target.value); // Chama a função de atualização de status
+const formatDate = (dateString) => {
+  if (!dateString) return "";
+
+  const [year, month, day] = dateString.split("-");
+  return `${day}/${month}/${year}`;
+};
+
+const TaskItem = React.memo(({ task, index, onDelete }) => {
+  const [visible, setVisible] = useState(false);
+  const [newDescription, setNewDescription] = useState(task.description);
+  const [newStatus, setNewStatus] = useState(task.status);
+
+  const { observer, onClose } = useModal({
+    onClose: () => setVisible(false),
+  });
+
+  const handleSaveTask = async () => {
+    console.log(`Salvando alterações para tarefa ${task.id}`);
+    setVisible(false);
   };
 
   return (
-    <>
-      <ClayList className="autofit-col">
-        <ClayCard className="m-2">
-          <ClayCard.Body>
-            <ClayCard.Description tag="h3">{task.title}</ClayCard.Description>
-            <ClayCard.Description truncate={false} displayType="text">
-              {task.description}
-            </ClayCard.Description>
-            <p>Vencimento: {new Date(task.due_date).toLocaleDateString()}</p>
-            <p>Prioridade: {task.priority}</p>
-            <div className="d-inline-flex">
-              <label>Status:</label>
-              <select value={task.status} onChange={handleStatusChange}>
-                <option value="pending">Pendente</option>
-                <option value="in_progress">Em Progresso</option>
-                <option value="completed">Concluída</option>
-              </select>
-              <ClayButton
-                onClick={() => onDelete(task.id)}
-                className="btn btn-danger"
-              >
-                Deletar
-              </ClayButton>
-            </div>
-          </ClayCard.Body>
-        </ClayCard>
-      </ClayList>
+    <Draggable draggableId={task.id} index={index}>
+      {(provided) => (
+        <div
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          className="mb-2"
+        >
+          <ClayCard>
+            <ClayCard.Body>
+              <ClayCard.Description tag="h6" className="mb-1">
+                {task.title}
+              </ClayCard.Description>
+              <ClayCard.Description displayType="text" className="mb-2">
+                {task.description}
+              </ClayCard.Description>
+              <div className="mb-2">
+                <span className="font-weight-bold">Vencimento:</span>{" "}
+                {formatDate(task.due_date)}
+              </div>
+              <div className="mb-2">
+                <span className="font-weight-bold">Prioridade:</span>{" "}
+                {task.priority}
+              </div>
+              <div className="d-flex justify-content-end">
+                <ClayButton
+                  className="mx-2"
+                  onClick={() => setVisible(true)}
+                  displayType="info"
+                >
+                  <FontAwesomeIcon icon={faEye} /> Visualizar
+                </ClayButton>
+                <ClayButton
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onDelete();
+                  }}
+                  displayType="danger"
+                >
+                  Deletar
+                </ClayButton>
+              </div>
+            </ClayCard.Body>
+          </ClayCard>
 
-      {/* <li>
-        <h3>{task.title}</h3>
-        <p>{task.description}</p>
-        <p>Vencimento: {new Date(task.due_date).toLocaleDateString()}</p>
-        <p>Prioridade: {task.priority}</p>
-
-        <label>Status:</label>
-        <select value={task.status} onChange={handleStatusChange}>
-          <option value="pending">Pendente</option>
-          <option value="in_progress">Em Progresso</option>
-          <option value="completed">Concluída</option>
-        </select>
-
-        <Button onClick={() => onDelete(task.id)} className="btn btn-danger">
-          Deletar
-        </Button>
-      </li> */}
-    </>
+          {visible && (
+            <ClayModal observer={observer} size="lg">
+              <ClayModal.Body>
+                <ClayForm>
+                  <ClayForm.Group>
+                    <label>Título</label>
+                    <p>{task.title}</p>
+                  </ClayForm.Group>
+                  <ClayForm.Group>
+                    <label>Data de Vencimento</label>
+                    <p>{formatDate(task.due_date)}</p>
+                  </ClayForm.Group>
+                  <ClayForm.Group>
+                    <label>Prioridade</label>
+                    <p>{task.priority}</p>
+                  </ClayForm.Group>
+                  <ClayForm.Group>
+                    <label htmlFor={`description-${task.id}`}>Descrição</label>
+                    <ClayInput
+                      component="textarea"
+                      id={`description-${task.id}`}
+                      name="description"
+                      value={newDescription}
+                      onChange={(e) => setNewDescription(e.target.value)}
+                      required
+                      rows={3}
+                      className="form-control"
+                    />
+                  </ClayForm.Group>
+                  <ClayForm.Group>
+                    <label htmlFor={`status-${task.id}`}>Status</label>
+                    <ClaySelect
+                      id={`status-${task.id}`}
+                      name="status"
+                      value={newStatus}
+                      onChange={(e) => setNewStatus(e.target.value)}
+                      className="form-control"
+                    >
+                      <ClaySelect.Option label="Pendente" value="pending" />
+                      <ClaySelect.Option
+                        label="Em Progresso"
+                        value="in_progress"
+                      />
+                      <ClaySelect.Option label="Concluída" value="completed" />
+                    </ClaySelect>
+                  </ClayForm.Group>
+                </ClayForm>
+              </ClayModal.Body>
+              <ClayModal.Footer
+                first={
+                  <ClayButton.Group spaced>
+                    <ClayButton displayType="secondary" onClick={onClose}>
+                      Cancelar
+                    </ClayButton>
+                  </ClayButton.Group>
+                }
+                last={
+                  <ClayButton onClick={handleSaveTask} displayType="primary">
+                    Salvar
+                  </ClayButton>
+                }
+              />
+            </ClayModal>
+          )}
+        </div>
+      )}
+    </Draggable>
   );
-};
+});
 
 export default TaskItem;

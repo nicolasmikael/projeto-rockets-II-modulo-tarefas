@@ -1,52 +1,61 @@
 import React from "react";
+import ClayForm, { ClaySelect, ClayInput } from "@clayui/form";
 
-const TaskFilter = ({ filters, onFilterChange }) => {
+const TaskFilters = ({ filters, onFilterChange }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     onFilterChange(name, value);
   };
 
   return (
-    <div>
-      <div>
-        <label>Filtrar por Status: </label>
-        <select
-          name="status"
-          value={filters.status}
-          onChange={handleInputChange}
-        >
-          <option value="all">Todas</option>
-          <option value="pending">Pendentes</option>
-          <option value="in_progress">Em Progresso</option>
-          <option value="completed">Concluídas</option>
-        </select>
-      </div>
+    <ClayForm.Group>
+      <div className="row">
+        <div className="col-12 col-sm-4 mb-2">
+          <label htmlFor="filterStatus">Status</label>
+          <ClaySelect
+            id="filterStatus"
+            name="status"
+            value={filters.status}
+            onChange={handleInputChange}
+            className="form-control"
+          >
+            <ClaySelect.Option label="Todas" value="all" />
+            <ClaySelect.Option label="Pendentes" value="pending" />
+            <ClaySelect.Option label="Em Progresso" value="in_progress" />
+            <ClaySelect.Option label="Concluídas" value="completed" />
+          </ClaySelect>
+        </div>
 
-      <div>
-        <label>Filtrar por Data de Vencimento: </label>
-        <input
-          type="date"
-          name="due_date"
-          value={filters.due_date}
-          onChange={handleInputChange}
-        />
-      </div>
+        <div className="col-12 col-sm-4 mb-2">
+          <label htmlFor="filterDueDate">Data de Vencimento</label>
+          <ClayInput
+            type="date"
+            id="filterDueDate"
+            name="due_date"
+            value={filters.due_date}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+        </div>
 
-      <div>
-        <label>Filtrar por Prioridade: </label>
-        <select
-          name="priority"
-          value={filters.priority}
-          onChange={handleInputChange}
-        >
-          <option value="all">Todas</option>
-          <option value="Baixa">Baixa</option>
-          <option value="Média">Média</option>
-          <option value="Alta">Alta</option>
-        </select>
+        <div className="col-12 col-sm-4 mb-2">
+          <label htmlFor="filterPriority">Prioridade</label>
+          <ClaySelect
+            id="filterPriority"
+            name="priority"
+            value={filters.priority}
+            onChange={handleInputChange}
+            className="form-control"
+          >
+            <ClaySelect.Option label="Todas" value="all" />
+            <ClaySelect.Option label="Baixa" value="Baixa" />
+            <ClaySelect.Option label="Média" value="Média" />
+            <ClaySelect.Option label="Alta" value="Alta" />
+          </ClaySelect>
+        </div>
       </div>
-    </div>
+    </ClayForm.Group>
   );
 };
 
-export default TaskFilter;
+export default TaskFilters;

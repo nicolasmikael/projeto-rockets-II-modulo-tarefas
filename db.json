@@ -1,36 +1,20 @@
 {
   "tasks": [
     {
-      "id": "a792",
-      "status": "pending",
-      "title": "Tarefa",
-      "description": "testes",
-      "due_date": "2024-10-03",
-      "priority": "Média"
-    },
-    {
-      "id": "6ce2",
-      "status": "completed",
+      "id": "017cb996-3cb1-48ce-83f8-b1ef6f8e18a2",
       "title": "Tarefa",
       "description": "teste",
-      "due_date": "2024-09-13",
-      "priority": "Média"
-    },
-    {
-      "id": "587c",
-      "title": "tarefa",
-      "description": "teste",
-      "due_date": "2024-09-13",
+      "due_date": "2024-09-16",
       "priority": "Média",
       "status": "in_progress"
     },
     {
-      "id": "d21c",
+      "id": "8d901b8c-4093-45ab-960f-db188ff58678",
       "title": "teste",
-      "description": "teste",
-      "due_date": "2024-09-13",
+      "description": "tarefa",
+      "due_date": "",
       "priority": "Média",
-      "status": "pending"
+      "status": "in_progress"
     }
   ]
 }
