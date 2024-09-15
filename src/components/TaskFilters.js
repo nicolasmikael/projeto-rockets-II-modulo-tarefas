@@ -1,7 +1,26 @@
 import React from "react";
-import ClayForm, { ClaySelect, ClayInput } from "@clayui/form";
+import ClayForm, { ClaySelect } from "@clayui/form";
+import ClayDatePicker from "@clayui/date-picker";
+
+const spritemap = require("@clayui/css/lib/images/icons/icons.svg").default;
 
 const TaskFilters = ({ filters, onFilterChange }) => {
+  const handleDateChange = (value) => {
+    console.log("Valor do DatePicker:", value);
+
+    if (value) {
+      const [startDate, endDate] = value.split(" - ");
+      console.log("Data inicial:", startDate);
+      console.log("Data final:", endDate);
+
+      onFilterChange("startDate", startDate);
+      onFilterChange("endDate", endDate);
+    } else {
+      onFilterChange("startDate", "");
+      onFilterChange("endDate", "");
+    }
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     onFilterChange(name, value);
@@ -26,15 +45,18 @@ const TaskFilters = ({ filters, onFilterChange }) => {
           </ClaySelect>
         </div>
 
-        <div className="col-12 col-sm-4 mb-2">
-          <label htmlFor="filterDueDate">Data de Vencimento</label>
-          <ClayInput
-            type="date"
-            id="filterDueDate"
-            name="due_date"
-            value={filters.due_date}
-            onChange={handleInputChange}
-            className="form-control"
+        <div className="col-12 col-sm-4 mb-2 pr-1">
+          <label htmlFor="filterDateRange">Período de Data</label>
+          <ClayDatePicker
+            placeholder="Selecionar período"
+            onChange={handleDateChange}
+            years={{
+              start: 2024,
+              end: new Date().getFullYear() + 20,
+            }}
+            range
+            spritemap={spritemap}
+            dateFormat="dd/MM/yyyy"
           />
         </div>
 

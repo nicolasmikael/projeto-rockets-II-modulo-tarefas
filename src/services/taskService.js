@@ -2,6 +2,9 @@
 
 export const API_URL = "http://localhost:3000/tasks";
 
+export const spritemap =
+  require("@clayui/css/lib/images/icons/icons.svg").default;
+
 // export const getTasks = () => {
 //   return axios.get(API_URL);
 // };

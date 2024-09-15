@@ -1,20 +1,28 @@
 {
   "tasks": [
     {
-      "id": "017cb996-3cb1-48ce-83f8-b1ef6f8e18a2",
-      "title": "Tarefa",
-      "description": "teste",
-      "due_date": "2024-09-16",
+      "title": "Tarefa teste",
+      "description": "Isso é uma tarefa",
+      "due_date": "2024-09-19",
       "priority": "Média",
-      "status": "in_progress"
+      "status": "in_progress",
+      "id": "7cf4e5e1-fcbb-4432-89e9-347ae551e21d"
     },
     {
-      "id": "8d901b8c-4093-45ab-960f-db188ff58678",
-      "title": "teste",
-      "description": "tarefa",
-      "due_date": "",
-      "priority": "Média",
-      "status": "in_progress"
+      "title": "Outra tarefa",
+      "description": "Buscar lavar secar",
+      "due_date": "2024-09-26",
+      "priority": "Baixa",
+      "status": "completed",
+      "id": "e2645393-b8db-45ec-9f05-1c3767802f70"
+    },
+    {
+      "title": "Essa tarefa agora vai",
+      "description": "De novo",
+      "due_date": "2024-10-04",
+      "priority": "Baixa",
+      "status": "pending",
+      "id": "b2a21593-347e-4c9a-8483-a3b66f893d3f"
     }
   ]
 }

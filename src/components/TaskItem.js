@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { Draggable } from "react-beautiful-dnd";
 import ClayCard from "@clayui/card";
 import ClayButton from "@clayui/button";
 import ClayModal, { useModal } from "@clayui/modal";
 import ClayForm, { ClayInput, ClaySelect } from "@clayui/form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { Draggable } from "react-beautiful-dnd";
 
 const formatDate = (dateString) => {
   if (!dateString) return "";
@@ -14,7 +14,7 @@ const formatDate = (dateString) => {
   return `${day}/${month}/${year}`;
 };
 
-const TaskItem = React.memo(({ task, index, onDelete }) => {
+const TaskItem = React.memo(({ task, index, onDelete, onUpdateTask }) => {
   const [visible, setVisible] = useState(false);
   const [newDescription, setNewDescription] = useState(task.description);
   const [newStatus, setNewStatus] = useState(task.status);
@@ -25,7 +25,17 @@ const TaskItem = React.memo(({ task, index, onDelete }) => {
 
   const handleSaveTask = async () => {
     console.log(`Salvando alterações para tarefa ${task.id}`);
-    setVisible(false);
+
+    // Verificar se onUpdateTask é uma função
+    if (typeof onUpdateTask === "function") {
+      await onUpdateTask(task.id, {
+        description: newDescription,
+        status: newStatus,
+      });
+      setVisible(false);
+    } else {
+      console.error("onUpdateTask não está definido");
+    }
   };
 
   return (
@@ -37,7 +47,7 @@ const TaskItem = React.memo(({ task, index, onDelete }) => {
           {...provided.dragHandleProps}
           className="mb-2"
         >
-          <ClayCard>
+          <ClayCard className="task-item">
             <ClayCard.Body>
               <ClayCard.Description tag="h6" className="mb-1">
                 {task.title}
@@ -67,6 +77,7 @@ const TaskItem = React.memo(({ task, index, onDelete }) => {
                     onDelete();
                   }}
                   displayType="danger"
+                  className={"delete-button"}
                 >
                   Deletar
                 </ClayButton>
