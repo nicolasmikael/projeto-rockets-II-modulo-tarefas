@@ -45,7 +45,7 @@ const TaskFilters = ({ filters, onFilterChange }) => {
           </ClaySelect>
         </div>
 
-        <div className="col-12 col-sm-4 mb-2 pr-1">
+        <div className="col-12 col-sm-4 mb-2">
           <label htmlFor="filterDateRange">Período de Data</label>
           <ClayDatePicker
             placeholder="Selecionar período"

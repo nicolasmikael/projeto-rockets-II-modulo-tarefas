@@ -1,14 +1,12 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import TaskList from "./components/TaskList";
+import Dashboard from "./components/Dashboard";
+import "./css/styles.css";
 import "@clayui/css/lib/css/atlas.css";
 
 function App() {
   return (
     <div>
-      <main>
-        <TaskList />
-      </main>
+      <Dashboard />
     </div>
   );
 }

@@ -11,10 +11,11 @@ import CreateTaskForm from "./CreateTaskForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import ClayButton from "@clayui/button";
-import { API_URL } from "../services/taskService";
+import { API_URL } from "../../services/taskService";
 import { DragDropContext } from "react-beautiful-dnd";
 import Column from "./Column";
 import { v4 as uuidv4 } from "uuid";
+import "@clayui/css/lib/css/atlas.css";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -280,8 +281,7 @@ const TaskList = () => {
 
   return (
     <div className="container my-4" style={{ maxWidth: "1200px" }}>
-      <h2 className="text-center mb-4">Lista de Tarefas</h2>
-      <div className="rounded shadow p-3">
+      <div className="rounded shadow p-3 background-modulo">
         {error && <p className="text-danger text-center">{error}</p>}
 
         <div className="row align-items-center mb-3 justify-content-center">

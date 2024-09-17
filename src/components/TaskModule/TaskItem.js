@@ -26,7 +26,6 @@ const TaskItem = React.memo(({ task, index, onDelete, onUpdateTask }) => {
   const handleSaveTask = async () => {
     console.log(`Salvando alterações para tarefa ${task.id}`);
 
-    // Verificar se onUpdateTask é uma função
     if (typeof onUpdateTask === "function") {
       await onUpdateTask(task.id, {
         description: newDescription,

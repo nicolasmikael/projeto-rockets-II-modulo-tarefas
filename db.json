@@ -9,20 +9,36 @@
       "id": "7cf4e5e1-fcbb-4432-89e9-347ae551e21d"
     },
     {
-      "title": "Outra tarefa",
-      "description": "Buscar lavar secar",
-      "due_date": "2024-09-26",
-      "priority": "Baixa",
-      "status": "completed",
-      "id": "e2645393-b8db-45ec-9f05-1c3767802f70"
-    },
-    {
       "title": "Essa tarefa agora vai",
       "description": "De novo",
       "due_date": "2024-10-04",
       "priority": "Baixa",
-      "status": "pending",
+      "status": "in_progress",
       "id": "b2a21593-347e-4c9a-8483-a3b66f893d3f"
+    },
+    {
+      "title": "Tarefa nova",
+      "description": "Teste",
+      "due_date": "2024-09-26",
+      "priority": "Média",
+      "status": "in_progress",
+      "id": "93d0376b-08e3-4656-b7a9-c529693f2128"
+    },
+    {
+      "title": "Isso é uma tarefa nova",
+      "description": "Tarefa teste",
+      "due_date": "2024-09-27",
+      "priority": "Média",
+      "status": "completed",
+      "id": "c12a0653-be70-4b02-a815-66292948b4d0"
+    },
+    {
+      "id": "9d2620ab-56e4-4a0e-8680-fac30a0e752e",
+      "title": "Isso é uma tarefa nova",
+      "description": "Teste",
+      "due_date": "2024-09-20",
+      "priority": "Média",
+      "status": "pending"
     }
   ]
 }

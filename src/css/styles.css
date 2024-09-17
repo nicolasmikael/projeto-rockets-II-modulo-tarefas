@@ -1,0 +1,57 @@
+.mosaic-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 10px;
+  padding: 20px;
+  grid-auto-rows: minmax(150px, auto);
+  background-color: #f9f9f9;
+}
+
+.mosaic-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  transition: all 0.2s ease-in-out;
+}
+
+.mosaic-item.is-dragging {
+  background-color: #f0f0f0;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.drop-area {
+  background-color: #e9ecef;
+  border: 2px dashed #007bff;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.drop-area.is-over {
+  background-color: #cceeff;
+}
+
+@media (max-width: 768px) {
+  .mosaic-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .mosaic-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mosaic-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

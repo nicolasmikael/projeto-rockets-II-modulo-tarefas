@@ -18,7 +18,7 @@ const Column = React.memo(
             <div
               ref={provided.innerRef}
               {...provided.droppableProps}
-              className="bg-white rounded p-2 shadow-sm"
+              className="column-background rounded p-2 shadow-sm"
               style={{
                 minHeight: "300px",
                 transition: "none",
