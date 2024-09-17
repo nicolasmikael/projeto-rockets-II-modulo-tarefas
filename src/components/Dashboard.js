@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import ComponentBar from "./ComponentBar";
 import DashboardGrid from "./DashboardGrid";
-import "@clayui/css/lib/css/atlas.css";
 import { v4 as uuidv4 } from "uuid";
 
 const initialComponents = [
@@ -23,7 +22,13 @@ function Dashboard() {
   const onDragEnd = (result) => {
     const { source, destination } = result;
 
-    if (!destination) return;
+    if (
+      !destination ||
+      (source.droppableId === destination.droppableId &&
+        source.index === destination.index)
+    ) {
+      return;
+    }
 
     if (
       source.droppableId === "component-bar" &&

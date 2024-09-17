@@ -11,10 +11,10 @@ function ComponentBar({ components }) {
           ref={provided.innerRef}
           style={{
             display: "flex",
-            padding: "5px", // Reduz o padding para deixar a área menor
+            padding: "5px",
             backgroundColor: snapshot.isDraggingOver ? "#cceeff" : "#f8f9fa",
             borderBottom: "1px solid #ddd",
-            minHeight: "40px", // Reduz a altura mínima para deixar a área menor
+            minHeight: "40px",
             maxHeight: "70px",
             alignItems: "center",
             justifyContent: components.length === 0 ? "center" : "flex-start",
@@ -36,7 +36,7 @@ function ComponentBar({ components }) {
                   {...provided.dragHandleProps}
                   style={{
                     display: "inline-block",
-                    padding: "8px", // Ajuste fino no padding dos módulos
+                    padding: "8px",
                     marginRight: "5px",
                     backgroundColor: "#fff",
                     border: "1px solid #ddd",

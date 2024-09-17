@@ -13,7 +13,7 @@
       "description": "De novo",
       "due_date": "2024-10-04",
       "priority": "Baixa",
-      "status": "in_progress",
+      "status": "pending",
       "id": "b2a21593-347e-4c9a-8483-a3b66f893d3f"
     },
     {
@@ -21,7 +21,7 @@
       "description": "Teste",
       "due_date": "2024-09-26",
       "priority": "Média",
-      "status": "in_progress",
+      "status": "completed",
       "id": "93d0376b-08e3-4656-b7a9-c529693f2128"
     },
     {
@@ -29,7 +29,7 @@
       "description": "Tarefa teste",
       "due_date": "2024-09-27",
       "priority": "Média",
-      "status": "completed",
+      "status": "pending",
       "id": "c12a0653-be70-4b02-a815-66292948b4d0"
     },
     {
@@ -38,7 +38,15 @@
       "description": "Teste",
       "due_date": "2024-09-20",
       "priority": "Média",
-      "status": "pending"
+      "status": "completed"
+    },
+    {
+      "id": "ab5f1e93-8e67-4110-bdf9-a39db3e8d6f0",
+      "title": "Isso é uma tarefa ",
+      "description": "Teste",
+      "due_date": "2024-09-27",
+      "priority": "Média",
+      "status": "in_progress"
     }
   ]
 }

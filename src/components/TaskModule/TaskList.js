@@ -15,7 +15,6 @@ import { API_URL } from "../../services/taskService";
 import { DragDropContext } from "react-beautiful-dnd";
 import Column from "./Column";
 import { v4 as uuidv4 } from "uuid";
-import "@clayui/css/lib/css/atlas.css";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
